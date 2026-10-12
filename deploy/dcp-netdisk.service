@@ -1,0 +1,14 @@
+[Unit]
+Description=DCP NetDisk API
+After=network.target
+[Service]
+Type=simple
+User=netdisk
+Group=netdisk
+WorkingDirectory=/opt/netdisk
+ExecStart=/opt/netdisk/.venv/bin/gunicorn --bind 127.0.0.1:5005 --workers 1 --threads 16 --timeout 120 app:create_app()
+Restart=on-failure
+RestartSec=3
+UMask=0007
+[Install]
+WantedBy=multi-user.target

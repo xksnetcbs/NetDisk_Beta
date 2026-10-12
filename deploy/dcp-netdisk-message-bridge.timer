@@ -1,0 +1,9 @@
+[Unit]
+Description=Retry pending NetDisk message publication
+[Timer]
+OnBootSec=10s
+OnUnitInactiveSec=5s
+AccuracySec=1s
+Unit=dcp-netdisk-message-bridge.service
+[Install]
+WantedBy=timers.target

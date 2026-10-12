@@ -1,0 +1,39 @@
+# Private local settings and signing material.
+config.json
+config.local.json
+**/.env
+**/.env.*
+!**/.env.example
+**/*.keystore
+**/*.jks
+**/local.properties
+**/remote-env.sh
+
+# Runtime and generated artifacts.
+.venv/
+**/node_modules/
+**/__pycache__/
+**/.gradle/
+**/build/
+**/dist/
+**/release/
+**/baseline/
+**/private/
+**/work/
+storage/
+.idea/
+**/.vscode/
+**/*.log
+**/*.apk
+**/*.db
+**/*.sqlite
+**/*.sqlite3
+**/lint-results-*.html
+# Capture output and authenticated QA fixtures may contain runtime identities.
+**/netdisk-merge-qa.json
+**/qa-credentials*.json
+**/qa-fixtures/
+doc/**/*.png
+doc/**/*.json
+doc/**/*.txt
+doc/**/*.html

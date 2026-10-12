@@ -1,0 +1,14 @@
+[Unit]
+Description=DCP NetDisk compiled web interface
+After=network.target
+[Service]
+Type=simple
+User=netdisk
+Group=netdisk
+WorkingDirectory=/opt/netdisk/frontend/NetDisk-Frontend
+ExecStart=/usr/bin/node node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 5105 --strictPort
+Restart=on-failure
+RestartSec=3
+UMask=0007
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Refresh the NetDisk WeChat file project
+
+[Timer]
+OnBootSec=30s
+OnUnitInactiveSec=60s
+AccuracySec=1s
+Unit=dcp-netdisk-wechat-files.service
+
+[Install]
+WantedBy=timers.target

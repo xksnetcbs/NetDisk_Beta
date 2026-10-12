@@ -1,0 +1,14 @@
+[Unit]
+Description=DCP NetDisk InfoCenter sidecar (existing stores, no collector workers)
+After=network.target
+[Service]
+Type=simple
+User=netdisk
+Group=netdisk
+WorkingDirectory=/opt/netdisk/integrations/DCP_InfoCenter/server
+ExecStart=/opt/netdisk/.venv/bin/gunicorn --bind 127.0.0.1:8767 --workers 1 --threads 16 --timeout 0 sidecar:create_app()
+Restart=on-failure
+RestartSec=3
+UMask=0077
+[Install]
+WantedBy=multi-user.target

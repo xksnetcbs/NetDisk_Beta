@@ -1,0 +1,10 @@
+[Unit]
+Description=Publish committed NetDisk messages and synchronize read state
+After=network.target
+[Service]
+Type=oneshot
+User=netdisk
+Group=netdisk
+WorkingDirectory=/opt/netdisk
+ExecStart=/opt/netdisk/.venv/bin/python -m flask --app app message-bridge --limit 1000
+UMask=0077

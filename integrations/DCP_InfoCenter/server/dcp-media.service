@@ -1,0 +1,10 @@
+[Unit]
+Description=DCP received WeChat image and voice processing
+After=wechat-capture-sync.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/wechat-capture/venv/bin/python %h/dcp-terminal-code/media_worker.py
+UMask=0077
+NoNewPrivileges=true
+TimeoutStartSec=180

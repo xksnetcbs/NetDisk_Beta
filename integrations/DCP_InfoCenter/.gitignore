@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.env.local
+work/
+__pycache__/
+*.pyc
+playwright-report/
+test-results/
+.env.production
+private/
+release/

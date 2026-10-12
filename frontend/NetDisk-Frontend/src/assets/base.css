@@ -1,0 +1,150 @@
+/* color palette from <https://github.com/vuejs/theme> */
+:root {
+  --vt-c-white: #ffffff;
+  --vt-c-white-soft: #f8f8f8;
+  --vt-c-white-mute: #f2f2f2;
+
+  --vt-c-black: #181818;
+  --vt-c-black-soft: #222222;
+  --vt-c-black-mute: #282828;
+
+  --vt-c-indigo: #2c3e50;
+
+  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
+  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
+  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
+  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
+
+  --vt-c-text-light-1: var(--vt-c-indigo);
+  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
+  --vt-c-text-dark-1: var(--vt-c-white);
+  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+}
+
+/* semantic color variables for this project */
+:root {
+  --color-background: var(--vt-c-white);
+  --color-background-soft: var(--vt-c-white-soft);
+  --color-background-mute: var(--vt-c-white-mute);
+
+  --color-border: var(--vt-c-divider-light-2);
+  --color-border-hover: var(--vt-c-divider-light-1);
+
+  --color-heading: var(--vt-c-text-light-1);
+  --color-text: var(--vt-c-text-light-1);
+
+  --section-gap: 160px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--vt-c-black);
+    --color-background-soft: var(--vt-c-black-soft);
+    --color-background-mute: var(--vt-c-black-mute);
+
+    --color-border: var(--vt-c-divider-dark-2);
+    --color-border-hover: var(--vt-c-divider-dark-1);
+
+    --color-heading: var(--vt-c-text-dark-1);
+    --color-text: var(--vt-c-text-dark-2);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--dcp-bg, var(--color-background));
+  transition:
+    color 220ms var(--dcp-ease, ease),
+    background-color 220ms var(--dcp-ease, ease);
+  line-height: 1.45;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'SF Pro Text',
+    'Segoe UI',
+    system-ui,
+    Roboto,
+    sans-serif;
+  font-size: 15px;
+  font-optical-sizing: auto;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  touch-action: manipulation;
+}
+
+:root {
+  --dcp-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dcp-dur-fast: 110ms;
+  --dcp-dur: 260ms;
+  --dcp-spring: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --dcp-primary: #007aff;
+  --dcp-primary-soft: rgba(0, 122, 255, 0.12);
+  --dcp-green: #34c759;
+  --dcp-orange: #ff9f0a;
+  --dcp-red: #ff3b30;
+  --dcp-teal: #5ac8fa;
+  --dcp-bg: #f5f5f7;
+  --dcp-bg-elevated: #fbfbfd;
+  --dcp-panel: rgba(255, 255, 255, 0.72);
+  --dcp-panel-solid: #ffffff;
+  --dcp-text: #1d1d1f;
+  --dcp-muted: rgba(60, 60, 67, 0.68);
+  --dcp-border: rgba(60, 60, 67, 0.12);
+  --dcp-border-strong: rgba(60, 60, 67, 0.20);
+  --dcp-topbar-bg: rgba(251, 251, 253, 0.72);
+  --dcp-topbar-text: #1d1d1f;
+  --dcp-sidebar-bg: rgba(255, 255, 255, 0.66);
+  --dcp-hover: rgba(0, 122, 255, 0.08);
+  --dcp-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+  --dcp-shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+:root[data-theme='dark'] {
+  --dcp-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dcp-dur-fast: 110ms;
+  --dcp-dur: 260ms;
+  --dcp-spring: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --dcp-primary: #0a84ff;
+  --dcp-primary-soft: rgba(10, 132, 255, 0.18);
+  --dcp-green: #30d158;
+  --dcp-orange: #ff9f0a;
+  --dcp-red: #ff453a;
+  --dcp-teal: #64d2ff;
+  --dcp-bg: #000000;
+  --dcp-bg-elevated: #1c1c1e;
+  --dcp-panel: rgba(28, 28, 30, 0.72);
+  --dcp-panel-solid: #1c1c1e;
+  --dcp-text: #f5f5f7;
+  --dcp-muted: rgba(235, 235, 245, 0.66);
+  --dcp-border: rgba(235, 235, 245, 0.12);
+  --dcp-border-strong: rgba(235, 235, 245, 0.20);
+  --dcp-topbar-bg: rgba(28, 28, 30, 0.68);
+  --dcp-topbar-text: #f5f5f7;
+  --dcp-sidebar-bg: rgba(28, 28, 30, 0.70);
+  --dcp-hover: rgba(10, 132, 255, 0.16);
+  --dcp-shadow: 0 22px 60px rgba(0, 0, 0, 0.42);
+  --dcp-shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}

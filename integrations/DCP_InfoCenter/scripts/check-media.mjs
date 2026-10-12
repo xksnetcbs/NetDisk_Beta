@@ -1,0 +1,25 @@
+import { chromium } from '@playwright/test'
+import assert from 'node:assert/strict'
+const browser = await chromium.launch({headless:true})
+try {
+  const page = await browser.newPage({viewport:{width:1440,height:960}})
+  const errors=[];page.on('pageerror',e=>errors.push(e.message))
+  await page.goto(process.env.TEST_URL || 'http://127.0.0.1:5173')
+  await page.getByRole('button',{name:'媒体',exact:true}).click()
+  await page.locator('.media-card').first().waitFor()
+  await page.screenshot({path:'work/media-desktop.png'})
+  await page.getByRole('button',{name:'语音',exact:true}).click()
+  const audio=page.locator('audio').first()
+  await audio.waitFor()
+  await audio.evaluate(async element=>{element.load();await element.play();element.pause()})
+  const response=await page.request.get(new URL(await audio.getAttribute('src'),page.url()).href)
+  assert.equal(response.status(),200)
+  assert.equal((await response.body()).subarray(0,4).toString(),'RIFF')
+  await page.getByRole('button',{name:'切换配色'}).click()
+  await page.screenshot({path:'work/media-dark.png'})
+  await page.setViewportSize({width:390,height:844})
+  await page.screenshot({path:'work/media-mobile.png'})
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false)
+  assert.deepEqual(errors,[])
+  console.log('Media UI, real WAV playback, dark theme and mobile layout passed')
+} finally {await browser.close()}

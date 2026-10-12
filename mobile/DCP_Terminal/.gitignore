@@ -1,0 +1,15 @@
+.gradle/
+build/
+app/build/
+local.properties
+baseline/
+*.log
+remote-env.sh
+*.keystore
+*.jks
+release/
+*.apk
+*.p12
+*.pfx
+*.pem
+*.key

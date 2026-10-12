@@ -1,0 +1,5 @@
+const status=document.querySelector('#status'),form=document.querySelector('#form'),note=document.querySelector('#note')
+function show(data){if(data.status==='approved'){location.replace('/');return}form.hidden=data.status!=='unregistered';status.textContent=({pending:'等待管理员批准',revoked:'此设备的访问权限已撤销',unregistered:'此浏览器尚未获得访问权限'})[data.status]||'无法验证设备';document.querySelector('#request-id').textContent=data.id||'';note.textContent=data.status==='pending'?'将上方申请编号交给管理员核对。批准前无法读取消息或下载文件。':data.status==='revoked'?'请联系管理员。':''}
+async function check(){try{const response=await fetch('/auth/status');if(!response.ok)throw Error();show(await response.json())}catch{status.textContent='连接失败，请重试'}}
+form.addEventListener('submit',async e=>{e.preventDefault();try{const response=await fetch('/auth/request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:document.querySelector('#name').value})});if(!response.ok)throw Error();show(await response.json())}catch{status.textContent='申请失败，请稍后重试'}})
+document.querySelector('#refresh').addEventListener('click',check);check();setInterval(()=>{if(!document.hidden)check()},5000)

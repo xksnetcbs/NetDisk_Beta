@@ -1,0 +1,19 @@
+plugins { id 'com.android.application' }
+
+android { namespace 'top.dcpstudios.calendarwidget'; compileSdk 35
+    defaultConfig { applicationId 'top.dcpstudios.calendarwidget'; minSdk 23; targetSdk 35; versionCode 21; versionName '1.6.3'; testInstrumentationRunner 'top.dcpstudios.calendarwidget.TerminalIntegrationInstrumentation' }
+    signingConfigs {
+        existingDebug {
+            def signingPath = System.getenv('DCP_TERMINAL_SIGNING_KEY')
+            if (signingPath) {
+                storeFile file(signingPath)
+                storePassword 'android'
+                keyAlias 'androiddebugkey'
+                keyPassword 'android'
+            }
+        }
+    }
+    buildTypes { debug { if (System.getenv('DCP_TERMINAL_SIGNING_KEY')) signingConfig signingConfigs.existingDebug } }
+}
+
+dependencies { implementation 'androidx.dynamicanimation:dynamicanimation:1.0.0' }

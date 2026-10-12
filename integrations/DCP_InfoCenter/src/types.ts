@@ -1,0 +1,4 @@
+export interface Attachment { name: string; size: number; extension: string; available: boolean; verified: boolean }
+export interface Message { id: number; uid: string; chat_id: string; chat_name: string; sender: string; sender_id: string; outgoing: boolean; time: number; kind: string; text: string; attachment?: Attachment; url?: string; quote?: string; duration?: number; media_available?: boolean; media_status?: string; source?: string; link_url?: string; user_id?: number; thread_id?: number; project_id?: number; payload?: { thread_type?: string; thread_id?: number; project_id?: number } }
+export interface Conversation { id: string; name: string; nickname: string; is_group: boolean; muted: boolean; count: number; file_count: number; last: Message }
+export interface Status { version: string; messages: number; conversations: number; file_messages: number; available_files: number; latest_at: number; captured_at: string; cursor: number; self_name: string }

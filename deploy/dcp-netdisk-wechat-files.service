@@ -1,0 +1,11 @@
+[Unit]
+Description=Synchronize downloaded WeChat files into the dedicated NetDisk project
+After=network.target dcp-netdisk.service
+
+[Service]
+Type=oneshot
+User=netdisk
+Group=netdisk
+WorkingDirectory=/opt/netdisk
+ExecStart=/opt/netdisk/.venv/bin/python -m flask --app app sync-wechat-files --limit 200
+UMask=0007
